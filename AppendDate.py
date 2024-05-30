@@ -1,3 +1,7 @@
+# Eugene Park
+# 2024.05.29
+# Appends the current date to the back of the file in _YYYYMMDD format
+
 import os
 import shutil
 from datetime import datetime
