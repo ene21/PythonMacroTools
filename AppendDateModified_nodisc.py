@@ -2,39 +2,16 @@
 # 2024.05.30
 # Appends the date modified of the file to the back of the file in _YYYYMMDD format
 # Only files within the direct directory, not any sub directories
-# Only for files that do not have the date stamp appeneded in the _YYYYMMDD format
+# No discrimination of if the file already has the date stamped.
 
 import os
-import re
 import shutil
 from datetime import datetime
 
-# Example usage:
-#directory_path = "/path/to/directory"  # Replace this with the path to your directory
-#append_date_to_filenames(directory_path)
-            
-def get_file_path():
-    file_path = input("Enter the file path: ")
-    return file_path
-
-def find_filenames_without_numbers(directory):
-    filenames = os.listdir(directory)
-    pattern = re.compile(r'^[^_]*$|^((?!_)\w)+(?<!\d)(?<!_)$')
-
-    filenames_without_numbers = []
-    for filename in filenames:
-        file_path = os.path.join(directory, filename)
-        if os.path.isfile(file_path) and pattern.match(filename):
-            filenames_without_numbers.append(filename)
-
-    return filenames_without_numbers
-
 def append_date_modified(directory):
-    filenames = find_filenames_without_numbers(directory)
-
-    for filename in filenames:
+    for filename in os.listdir(directory):
         filepath = os.path.join(directory, filename)
-
+        
         if os.path.isfile(filepath):
             modified_time = os.path.getmtime(filepath)
             #modified_date = datetime.datetime.fromtimestamp(modified_time).strftime('%Y%m%d')
@@ -49,6 +26,14 @@ def append_date_modified(directory):
             new_filepath = os.path.join(directory, new_filename)
             os.rename(filepath, new_filepath)
             print(f"Renamed {filename} to {new_filename}")
+
+# Example usage:
+#directory_path = "/path/to/directory"  # Replace this with the path to your directory
+#append_date_to_filenames(directory_path)
+            
+def get_file_path():
+    file_path = input("Enter the file path: ")
+    return file_path
 
 if __name__ == "__main__":
     file_path = get_file_path()
