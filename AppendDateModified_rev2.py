@@ -19,7 +19,7 @@ def get_file_path():
 
 def find_filenames_without_numbers(directory):
     filenames = os.listdir(directory)
-    pattern = re.compile(r'^(?!.*_\d{8}).*$')
+    pattern = re.compile(r'^[^_]*$|^((?!_)\w)+(?<!\d)(?<!_)$')
 
     filenames_without_numbers = []
     for filename in filenames:
