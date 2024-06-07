@@ -8,14 +8,11 @@ import os
 import re
 import shutil
 from datetime import datetime
+from GetPath import *
 
 # Example usage:
 #directory_path = "/path/to/directory"  # Replace this with the path to your directory
 #append_date_to_filenames(directory_path)
-            
-def get_file_path():
-    file_path = input("Enter the file path: ")
-    return file_path
 
 def find_filenames_without_numbers(directory):
     filenames = os.listdir(directory)
