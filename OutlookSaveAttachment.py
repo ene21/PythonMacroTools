@@ -21,6 +21,6 @@ inbox = namespace.GetDefaultFolder(6)  # 6 refers to the inbox folder
 for mail in inbox.Items:
     # Save attachments if the email has attachments
     if mail.Attachments:
-        save_attachments(mail, "Your Subject Here")
+        save_attachments(mail, "SYD51, Panel Point Log Report, SYD51_ALARM_REPORT, 6/7/2024 05:45 AM")
 
 print("Attachments downloaded successfully.")
